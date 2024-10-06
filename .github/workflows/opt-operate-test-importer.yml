@@ -1,0 +1,12 @@
+
+name: Modified Operate Run Test Importer
+jobs:
+  run-importer-tests:
+    uses: ./.github/workflows/operate-run-tests.yml
+    with:
+      command: mvn -f operate verify -T1C -P skipFrontendBuild,operateItImport -B
+        -Dfailsafe.rerunFailingTestsCount=2
+    secrets: inherit
+'on':
+- push
+- workflow_dispatch
